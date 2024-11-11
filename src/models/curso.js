@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-const Sede = require('./sede'); 
 
 const Curso = sequelize.define('Curso', {
   nombre: {
@@ -32,8 +31,5 @@ const Curso = sequelize.define('Curso', {
     allowNull: true,
   },
 });
-
-Curso.hasMany(Sede, { foreignKey: 'cursoId' }); // Relación con Sede (un curso puede tener varias sedes)
-Sede.belongsTo(Curso, { foreignKey: 'cursoId' }); // Relación inversa (una sede pertenece a un curso)
 
 module.exports = Curso;
