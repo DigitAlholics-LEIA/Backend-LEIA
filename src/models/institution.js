@@ -1,16 +1,13 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const Specialty = require('../models/Specialty')
 
-const Curso = sequelize.define('Curso', {
-  nombre: {
+const Institution = sequelize.define('Institution', {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  fechaInicio: {
-    type: DataTypes.DATEONLY,
-    allowNull: true,
-  },
-  fechaFinAproximada: {
+  brand: {
     type: DataTypes.DATEONLY,
     allowNull: true,
   },
@@ -18,7 +15,7 @@ const Curso = sequelize.define('Curso', {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  numeroDeCiclos: {
+  cycles: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
@@ -32,4 +29,8 @@ const Curso = sequelize.define('Curso', {
   },
 });
 
-module.exports = Curso;
+Institution.belongsTo(Specialty, { foreignKey: 'specialtyId' });
+
+module.exports = Institution
+
+//Tipo: (Idioma, Carrera, Curso)

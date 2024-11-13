@@ -5,8 +5,9 @@ const sequelize = require('./config/db');
 
 app.use(express.json());
 
-app.use('/api/cursos', require('./routes/cursoRoutes'));
-app.use('/api/historias', require('./routes/historiasRoutes'));
+app.use('/api/institution', require('./routes/institutionRoutes'));
+app.use('/api/history', require('./routes/historyRoutes'));
+app.use('/api/speciality', require('./routes/specialityRoute'));
 
 sequelize.sync().then(() => {
   const port = process.env.PORT || 3000;
